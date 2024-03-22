@@ -1,72 +1,96 @@
 const date = "Friday 8 March 2024"
+const yourTrackingNumber = '999';
+
 const bannerText = "Your item is out for delivery on March 7, 2024 at 6:10 am in PALM DESERT, CA 92260"
+
+const trackingStates = {
+    "USPS in possession of item": {
+        "status": "Completed",
+        "date": "Friday 8 March 2024, 12:00 AM",
+        "address": "Test Address 1"
+    },
+    "Departed Post Office": {
+        "status": "Completed",
+        "date": "Friday 8 March 2024, 12:00 AM",
+        "address": "Test Address 2"
+    },
+    "Arrived at USPS Regional Origin Facility": {
+        "status": "Completed",
+        "date": "Friday 8 March 2024, 12:00 AM",
+        "address": "Test Address 3"
+    },
+    "Departed USPS Regional Facility": {
+        "status": "Completed",
+        "date": "Friday 8 March 2024, 12:00 AM",
+        "address": "Test Address 4"
+    },
+    "In Transit to Next Facility": {
+        "status": "Completed",
+        "date": "Friday 8 March 2024, 2:00 AM",
+        "address": ""
+    },
+    "Arrived at USPS Regional Destination Facility": {
+        "status": "Completed",
+        "date": "Friday 8 March 2024, 12:00 AM",
+        "address": "Test Address 5"
+    },
+    "Departed USPS Regional Facility": {
+        "status": "Completed",
+        "date": "Friday 8 March 2024, 12:00 AM",
+        "address": "Test Address 6"
+
+    },
+    "Arrived at USPS Facility": {
+        "status": "Completed",
+        "date": "Friday 8 March 2024, 12:00 AM",
+        "address": "Test Address 7"
+
+    },
+    "Departed USPS Facility": {
+        "status": "Completed",
+        "date": "Friday 8 March 2024, 12:00 AM",
+        "address": "Test Address 8"
+    },
+    "Arrived at next USPS Facility": {
+        "status": "Withheld",
+        "date": "Friday 8 March 2024, 12:00 AM",
+        "address": "Test Address 9"
+    },
+    "Arrived at Post Office": {
+        "status": "Pending",
+        "date": "Friday 8 March 2024, 12:00 AM",
+        "address": "Test Address 10"
+    },
+    "Out for Delivery, Expected Delivery Between ": {
+        "status": "Pending",
+        "date": "Friday 8 March 2024, 12:00 AM",
+        "address": "Test Address 11"
+    }
+}
+
+
+function handleTrackingConfirm(e) {
+    var form = document.forms['TrackConfirmAction']; // or use document.getElementById('trackPackage');
+
+    // Assuming you have an input field with name 'trackingNumber'f
+    trackingNumber = form.elements['tracking-input'].value;
+    document.getElementById('tracking-value').value = trackingNumber;
+
+    if (trackingNumber == yourTrackingNumber) {
+        // Navigate to tracking page with the tracking number as a query parameter
+        form.action = './tracking.html';
+
+    } else {
+        // Redirect to an error page if the tracking number does not match
+        console.log("Tracking number does not match");
+        form.action = './error.html';
+    }
+
+}
+
 //Status either Pending or Completed
 document.addEventListener('DOMContentLoaded', () => {
 
-    const trackingStates = {
-        "USPS in possession of item": {
-            "status": "Completed",
-            "date": "Friday 8 March 2024, 12:00 AM",
-            "address": "Test Address 1"
-        },
-        "Departed Post Office": {
-            "status": "Completed",
-            "date": "Friday 8 March 2024, 12:00 AM",
-            "address": "Test Address 2"
-        },
-        "Arrived at USPS Regional Origin Facility": {
-            "status": "Completed",
-            "date": "Friday 8 March 2024, 12:00 AM",
-            "address": "Test Address 3"
-        },
-        "Departed USPS Regional Facility": {
-            "status": "Completed",
-            "date": "Friday 8 March 2024, 12:00 AM",
-            "address": "Test Address 4"
-        },
-        "In Transit to Next Facility": {
-            "status": "Completed",
-            "date": "Friday 8 March 2024, 2:00 AM",
-            "address": ""
-        },
-        "Arrived at USPS Regional Destination Facility": {
-            "status": "Completed",
-            "date": "Friday 8 March 2024, 12:00 AM",
-            "address": "Test Address 5"
-        },
-        "Departed USPS Regional Facility": {
-            "status": "Completed",
-            "date": "Friday 8 March 2024, 12:00 AM",
-            "address": "Test Address 6"
-
-        },
-        "Arrived at USPS Facility": {
-            "status": "Completed",
-            "date": "Friday 8 March 2024, 12:00 AM",
-            "address": "Test Address 7"
-
-        },
-        "Departed USPS Facility": {
-            "status": "Completed",
-            "date": "Friday 8 March 2024, 12:00 AM",
-            "address": "Test Address 8"
-        },
-        "Arrived at next USPS Facility": {
-            "status": "Withheld",
-            "date": "Friday 8 March 2024, 12:00 AM",
-            "address": "Test Address 9"
-        },
-        "Arrived at Post Office": {
-            "status": "Pending",
-            "date": "Friday 8 March 2024, 12:00 AM",
-            "address": "Test Address 10"
-        },
-        "Out for Delivery, Expected Delivery Between ": {
-            "status": "Pending",
-            "date": "Friday 8 March 2024, 12:00 AM",
-            "address": "Test Address 11"
-        }
-    }
 
 
 

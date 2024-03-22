@@ -94,7 +94,7 @@ input[type="checkbox"]:focus ~ span {
   vertical-align: bottom;
 }
 button.btn.btn-default.search {
-  background: transparent url(/go/images/search.svg) no-repeat;
+  background: transparent url(https://tools.usps.com/go/images/search.svg) no-repeat;
   background-size: 25px 25px;
   background-position: 7px 7px;
 }

@@ -1,4 +1,4 @@
-var yourTrackingNumber = '999';
+const yourTrackingNumber = '999';
 
 
 
@@ -20,3 +20,5 @@ function handleTrackingConfirm(e) {
     }
 
 }
+
+

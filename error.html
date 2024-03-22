@@ -2525,8 +2525,9 @@ margin-bottom: 0;
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-11 col-md-offset-1">
                 <form
-                  action="https://tools.usps.com/go/TrackConfirmAction"
+                  onsubmit="handleTrackingConfirm()"
                   name="TrackConfirmAction"
+                  action="#"
                   id="trackPackage"
                   method="GET"
                   novalidate="true"
@@ -2540,6 +2541,7 @@ margin-bottom: 0;
                     value=""
                   />
                   <input type="hidden" id="tLabels" name="tLabels" value="" />
+                  <input type="hidden" id="tracking-value" name="tracking-value" value="">
                   <div class="form-group">
                     <div class="input-group">
                       <label>Track Another Package</label>
