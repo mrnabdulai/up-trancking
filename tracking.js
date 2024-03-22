@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     if (window.location.href.indexOf('tracking-value') == -1) {
-        window.location.href = './enter.html';
+        window.location.href = './index.html';
     }
     else {
         var url = new URL(window.location.href);
