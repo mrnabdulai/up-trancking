@@ -88,6 +88,8 @@ function handleTrackingConfirm(e) {
 
 }
 
+
+
 //Status either Pending or Completed
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -144,10 +146,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Select the container
     const container = document.querySelector('.tracking-progress-bar-status-container');
-
+    let pendingEncountered = false;
     eventsArray.forEach((event, index) => {
         let div;
-        if (event.status === "Completed" || event.status === "Withheld") {
+        const statusLower = event.status.toLowerCase();
+        if (statusLower === "completed" || statusLower === "withheld" && !pendingEncountered) {
             div = document.createElement('div');
             div.className = "tb-step";
             if (index < eventsArray.length - 3 && completedShown >= 2) {
@@ -156,8 +159,13 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 completedShown += 1;
             }
+
+            if (statusLower == "withheld") {
+                pendingEncountered = true
+            }
+
             div.innerHTML = `
-        ${event.status === "Withheld" ? `
+        ${event.status === "withheld" ? `
         <p class="tb-status-whithheld">Withheld
         <img src="./USPS.com® - USPS Tracking® Results_files/holdmail-red.svg" alt="Holdmail Icon">
         </p>
@@ -167,6 +175,8 @@ document.addEventListener('DOMContentLoaded', () => {
         <p class="tb-date">${event.date}</p>
       `;
         } else { // Pending status
+            pendingEncountered = true
+
             div = document.createElement('div');
             div.className = "upcoming-step";
             div.innerHTML = `
