@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             div.innerHTML = `
-        ${event.status === "withheld" ? `
+        ${statusLower === "withheld" ? `
         <p class="tb-status-whithheld">Withheld
         <img src="./USPS.com® - USPS Tracking® Results_files/holdmail-red.svg" alt="Holdmail Icon">
         </p>
